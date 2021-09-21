@@ -16,21 +16,19 @@ public class TryTestNG {
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\MethodsofSelect\\" +
                 "src\\driver\\chromedriver.exe");
-//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         System.out.println("Before Test executed");
     }
 
     @BeforeMethod
-    public void tryBefore()
-    {
+    public void tryBefore() {
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(url);
         System.out.println("Before Method executed");
     }
 
     @AfterMethod
-    public void tryAfter()
-    {
+    public void tryAfter() {
         System.out.println("After method Executed");
         driver.close();
     }
@@ -67,6 +65,7 @@ public class TryTestNG {
         String actualRes = driver.getTitle();
 //        Assert.assertEquals(actualRes, expectedRes);
         System.out.println("Third test executed");
+
 
     }
 
