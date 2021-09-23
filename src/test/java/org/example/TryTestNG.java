@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -42,6 +43,13 @@ public class TryTestNG {
 
     }
 
+    @Test(dependsOnMethods = "verifyHompageTittle")
+    public void should_ReturnUrlofTheAbovesite() {
+        System.out.println("Depends on method executed: ");
+        String url = driver.getCurrentUrl();
+        System.out.println(url);
+    }
+
     @Test(priority = 2)
     public void verifyCurrentTittle() {
 
@@ -58,15 +66,18 @@ public class TryTestNG {
     @Test(priority = 3)
     public void useNavigate() {
 
-
         driver.get(url);
         driver.navigate().to("https://www.google.co.in/");
         String expectedRes = "Google";
         String actualRes = driver.getTitle();
-//        Assert.assertEquals(actualRes, expectedRes);
         System.out.println("Third test executed");
+    }
 
-
+    @Test(dependsOnMethods = "useNavigate")
+    public void should_ReturnUrlofTheAbovesiteAgain() {
+        System.out.println("Second Depends on method executed: ");
+        String url = driver.getCurrentUrl();
+        System.out.println(url);
     }
 
     @AfterTest

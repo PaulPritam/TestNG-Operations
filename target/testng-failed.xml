@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [TryoutTestNGXml]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test Groups(failed)">
+    <groups>
+      <run>
+        <include name="sendKeys"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="org.example.TryoutTestNGXml">
+        <methods>
+          <include name="should_NavigateTOTheGivenWebPage"/>
+          <include name="should_NavigateAndSendKeys"/>
+        </methods>
+      </class> <!-- org.example.TryoutTestNGXml -->
+    </classes>
+  </test> <!-- Test Groups(failed) -->
+</suite> <!-- Failed suite [TryoutTestNGXml] -->

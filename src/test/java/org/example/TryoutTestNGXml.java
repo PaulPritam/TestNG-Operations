@@ -3,9 +3,7 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +11,7 @@ public class TryoutTestNGXml {
 
     public static WebDriver driver;
 
-    @BeforeGroups("sendKeys")
+    @BeforeGroups(groups = {"sendKeys","set"})
     public static void setDriver()
     {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\MethodsofSelect\\" +
@@ -22,6 +20,7 @@ public class TryoutTestNGXml {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         System.out.println("Before Groups executed");
     }
+
 
     @Test(groups = {"sendKeys"})
     public void should_NavigateAndSendKeys() {
@@ -36,7 +35,22 @@ public class TryoutTestNGXml {
     @Test(groups = {"sendKeys","navigate"})
     public void should_NavigateTOTheGivenWebPage() {
 
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         driver.navigate().to("https://www.myntra.com/");
         System.out.println("Groups-navigate executed");
+    }
+
+    @Test(groups = {"excluded"})
+    public void exclude() {
+
+        driver.navigate().to("https://www.selenium.dev/");
+        System.out.println("Exclude executed");
+    }
+
+    @AfterGroups(groups = {"sendKeys","close"})
+    public void quit()
+    {
+        driver.quit();
+        System.out.println("Quit executed");
     }
 }

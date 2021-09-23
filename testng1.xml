@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--Run via groups-->
+<suite name="TryoutTestNGXml">
+    <groups>
+        <run>
+            <include name="sendKeys">
+            </include>
+            <exclude name="excluded"></exclude>
+        </run>
+    </groups>
+
+    <test name="Test Groups">
+        <classes>
+            <class name="org.example.TryoutTestNGXml"/>
+        </classes>
+    </test>
+</suite>
+
+
+        <!--Run via package-->
+        <!--<suite name="TestNGSecond 2">-->
+        <!--    <test name="Test Groups">-->
+        <!--        <packages>-->
+        <!--            <package name="org.example"></package>-->
+        <!--        </packages>-->
+        <!--        <classes>-->
+        <!--            <class name="org.example.TestNGSecond"></class>-->
+        <!--        </classes>-->
+        <!--    </test>-->
+        <!--</suite>-->
+
+        <!--Run parallel tests-->
+        <!--<suite name = "Parallel Testing Suite">-->
+        <!--<test name = "Parallel Tests" parallel = "methods" thread-count = "3">-->
+        <!--    <classes>-->
+        <!--        <class name="org.example.ParallelTests"/>-->
+        <!--    </classes>-->
+        <!--</test>-->
+        <!--</suite>-->
