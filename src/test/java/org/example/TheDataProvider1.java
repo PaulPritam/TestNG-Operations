@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -23,23 +24,27 @@ public class TheDataProvider1 {
 //                };
 //    }
 
-    @DataProvider(name = "login")
-    public Object[][] data() {
+//    @DataProvider(name = "login")
+//    public Object[][] data() {
+//
+//        Object[][] data= new Object[2][2];
+//
+//        data[0][0] = "standard_user";
+//        data[0][1] = "secret_sauce";
+//        data[1][0] = "problem_user";
+//        data[1][1] = "secret_sauce";
+//
+//        return data;
+//    }
 
-        Object[][] data= new Object[2][2];
 
-        data[0][0] = "standard_user";
-        data[0][1] = "secret_sauce";
-        data[1][0] = "problem_user";
-        data[1][1] = "secret_sauce";
+//    @Test(dataProvider = "login")
 
-        return data;
-    }
-
-    @Test(dataProvider = "login")
+    @Test
+    @Parameters({"user","password"})
     public void testData(String userName, String password) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\MethodsofSelect\\" +
-                "src\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\TestNGOps\\src" +
+                "\\driver1\\chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
 
@@ -51,7 +56,7 @@ public class TheDataProvider1 {
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-button")).click();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         driver.close();
 

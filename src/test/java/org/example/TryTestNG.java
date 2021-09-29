@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(ListenerSample.class)
 public class TryTestNG {
 
     public String url = "https://www.guru99.com/";
@@ -15,8 +16,8 @@ public class TryTestNG {
 
     @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\MethodsofSelect\\" +
-                "src\\driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pritam Paul\\Downloads\\demo1\\TestNGOps\\src" +
+                "\\driver1\\chromedriver.exe");
         System.out.println("Before Test executed");
     }
 
@@ -40,7 +41,6 @@ public class TryTestNG {
 //        String expectedRes = "Meet Guru99 – Free Training Tutorials & Video for IT Courses";
         String actualRes = driver.getTitle();
         System.out.println("First test executed");
-
     }
 
     @Test(dependsOnMethods = "verifyHompageTittle")
@@ -52,8 +52,6 @@ public class TryTestNG {
 
     @Test(priority = 2)
     public void verifyCurrentTittle() {
-
-
         driver.get(url);
         String expectedRes = "https://www.guru99.com/";
         String actualRes = driver.getCurrentUrl();
@@ -68,8 +66,9 @@ public class TryTestNG {
 
         driver.get(url);
         driver.navigate().to("https://www.google.co.in/");
-        String expectedRes = "Google";
+        String expectedRes = "Not-Google";
         String actualRes = driver.getTitle();
+        Assert.assertEquals(expectedRes,actualRes);
         System.out.println("Third test executed");
     }
 
